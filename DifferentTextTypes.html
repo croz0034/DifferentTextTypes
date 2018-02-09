@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Putting text inside an element</title>
+</head>
+<body>
+    
+    <script>
+        
+        
+//        This version interprets the text as a string and doesn't bother checking for html tabs.
+        let examples = document.createElement('div');
+        examples.textContent = "testing <strong> bold </strong> text with .textContent";
+        document.body.appendChild(examples);
+        
+//        This version interprets the text as HTML code and will apply tags hidden within.  Probably the most efficient method if you're adding all the content at once. It's also good if you want to overwrite or delete all other children of the element targeted
+        examples = document.createElement('div');
+        examples.innerHTML = "testing <strong> bold </strong> text with .innerHTML";
+        document.body.appendChild(examples);
+        
+        
+//        This version does have the Bold tag, but adding text content this way ignores the tags and only uses the text content within
+        examples = document.createElement('div');
+        examples.textContent = "testing ";
+        document.body.appendChild(examples);
+        let strong = document.createElement('strong');
+        strong.textContent = "bold";
+        examples.appendChild(strong);
+        examples.textContent += " text with a separate bold tag"
+        
+//        This version has the bold tag, then appends an additional textNode at the end. Useful if you wanted to add to an element at a later point (eg having a button add content, such as status effects for a video game)
+        examples = document.createElement('div');
+        examples.textContent = "testing ";
+        document.body.appendChild(examples);
+        strong = document.createElement('strong');
+        strong.textContent = "bold";
+        examples.appendChild(strong);
+        let textNode = document.createTextNode(" text with a text node at the end");
+        examples.appendChild(textNode);
+    </script>
+    
+</body>
+</html>
+
