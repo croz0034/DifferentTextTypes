@@ -27,7 +27,16 @@
         let strong = document.createElement('strong');
         strong.textContent = "bold";
         examples.appendChild(strong);
-        examples.textContent += " text with a separate bold tag"
+        examples.textContent += " text with a separate bold tag";
+        
+        //        This version does have the Bold tag, but adding text content this way ignores the tags and only uses the text content within
+        examples = document.createElement('div');
+        examples.textContent = "testing ";
+        document.body.appendChild(examples);
+        let strong = document.createElement('strong');
+        strong.textContent = "bold";
+        examples.appendChild(strong);
+        examples.innerHTML += " text with a separate bold tag (using innerHTML)";
         
 //        This version has the bold tag, then appends an additional textNode at the end. Useful if you wanted to add to an element at a later point (eg having a button add content, such as status effects for a video game)
         examples = document.createElement('div');
